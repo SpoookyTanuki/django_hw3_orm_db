@@ -24,12 +24,9 @@ def show_catalog(request):
 def show_product(request, slug):
     template = 'product.html'
 
-    phones = Phone.objects.all()
-    phone_slug = phones.get(slug)
-    if phone_slug is not None:
-        phones = Phone.objects.all().filter(slug=phone_slug)
+    phone = Phone.objects.get(slug__exact=slug)
 
     context = {
-        "phones": phones
+        "phone": phone
     }
     return render(request, template, context)
