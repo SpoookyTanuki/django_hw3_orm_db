@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+<div class="container">
+    <div class="header">
+        <a href="catalog">Catalog</a>
+    </div>
+
+
+{% block title %}{{ phone.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <a href="catalog/">Catalog</a>
+
+
+        <h1>{{ phone.name }}</h1>
+    </div>
+
+    <div class="content">
+        <img src="{{ phone.image }}" alt="{{ phone.name }}"/>
+        <div>Price: {{ phone.price }} ₽</div>
+        <div>Date of issue: {{ phone.release_date }}</div>
+        <div>{{ phone.lte_exists|yesno:'In stock,Out of stock' }}</div>
+    </div>
+    {% endblock %}
